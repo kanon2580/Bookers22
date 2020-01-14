@@ -1,0 +1,24 @@
+<h2>User info</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', size: '100x100' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td>Introduction</td>
+      <td><%= user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% if user_signed_in? && current_user.id == user.id %>
+  <%= link_to 'Edit user', edit_user_path(current_user), class: 'btn btn-block btn-success' %>
+<% end %>

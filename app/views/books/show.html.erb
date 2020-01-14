@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="success">
+    <%= flash[:book_created] %>
+    <%= flash[:book_updated] %>
+  </div>
+</div>
+<!--  if定義しなくでも出来る。
+      =>if @book.save定義により、saveされた時のみflash変数が与えられる。-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="row">
+        <%= render 'users/sidebar', user:@user %>
+      </div>
+      <div class="row">
+        <%= render 'books/sidebar', new_book:@new_book %>
+      </div>
+    </div>
+
+<div class="col-sm-9">
+<h2>Book detail</h2>
+
+  <table class="table">
+    <tr>
+      <td>
+        <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: 'no_image.jpg', size: '40x40' %><br>
+        <%= link_to @book.user.name, user_path(@book.user) %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
+      <td><%= link_to "Edit", edit_book_path(@book) %></td>
+      <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+    </tr>
+  </table>
+</div>
+
+  </div>
+</div>

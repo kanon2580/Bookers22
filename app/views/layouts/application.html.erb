@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers22</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+
+        <nav class="navbar navbar-expand fixed-top navbar-dark bg-dark">
+          <span class="navbar-brand h1 mr-auto">Bookers</span>
+
+          <% if user_signed_in? %>
+            <div class="navbar-nav justify-content-end">
+              <%= link_to 'Home', user_path(current_user), class: "nav-item nav-link" %>
+              <%= link_to "Users", users_path, class: 'nav-item nav-link' %>
+              <%= link_to 'Books', books_path, class: "nav-item nav-link" %>
+              <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+            </div>
+
+          <% else %>
+            <div class="navbar-nav justify-content-end">
+              <%= link_to 'Home', root_path, class: "nav-item nav-link" %>
+              <%= link_to 'About', homes_about_path, class: "nav-item nav-link" %>
+              <%= link_to 'Sign up', new_user_registration_path, class: "nav-item nav-link" %>
+              <%= link_to 'Log in', new_user_session_path, class: "nav-item nav-link" %>
+            </div>
+
+          <% end %>
+       </nav>
+
+     </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <div class="containwe">
+        <div class="offset-sm-8">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

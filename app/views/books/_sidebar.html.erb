@@ -1,0 +1,17 @@
+<h2>New Book</h2>
+
+<%= form_for (new_book) do |f| %>
+<!--  new nomethod errorが出た。
+      =>form_forの初期設定でbooks_pathが設定されているのに、
+        books_pathが指定されていなかったためerror。
+        createで解決されたのは、redirect_toを設定したから-->
+
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :opinion %><br>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
